@@ -1,0 +1,37 @@
+{
+  "students": {
+    "1": {
+      "id": 1,
+      "name": "Rahul Patel",
+      "roll": 101,
+      "class": "BCA",
+      "email": "rahul@gmail.com",
+        "password": "123"
+
+    },
+    "2": {
+      "id": 2,
+      "name": "Amit Shah",
+      "roll": 102,
+      "class": "BSc",
+      "email": "amit@gmail.com",
+        "password": "123"
+    },
+    "3": {
+      "id": 3,
+      "name": "Neha Joshi",
+      "roll": 103,
+      "class": "BCom",
+      "email": "neha@gmail.com",
+        "password": "123"
+    },
+    "4": {
+      "id": 4,
+      "name": "Priya Mehta",
+      "roll": 104,
+      "class": "BA",
+      "email": "priya@gmail.com",
+      "password": "123"
+    }
+  }
+}
