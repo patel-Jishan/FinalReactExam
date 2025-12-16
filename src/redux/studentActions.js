@@ -1,25 +1,27 @@
-const BASE_URL =
+let  STUDENT_URL =
   "https://reactfinalexam-2c92a-default-rtdb.firebaseio.com/students";
 
-export const fetchStudents = () => async (dispatch) => {
+
+export let  fetchStudents = () => async (dispatch) => {
   dispatch({ type: "FETCH_REQ" });
 
   try {
-    const res = await fetch(`${BASE_URL}.json`);
-    const data = await res.json();
+    let res = await fetch(`${STUDENT_URL}.json`);
+    let data = await res.json();
 
-    const students = data
+    let students = data
       ? Object.keys(data).map((id) => ({ id, ...data[id] }))
       : [];
 
     dispatch({ type: "FETCH_SUCCESS", payload: students });
-  } catch (error) {
-    dispatch({ type: "FETCH_FAIL", payload: error.message });
+  } catch (err) {
+    dispatch({ type: "FETCH_FAIL", payload: err.message });
   }
 };
 
-export const addStudent = (student) => async (dispatch) => {
-  await fetch(`${BASE_URL}.json`, {
+
+export let addStudent = (student) => async (dispatch) => {
+  await fetch(`${STUDENT_URL}.json`, {
     method: "POST",
     body: JSON.stringify(student),
   });
@@ -27,22 +29,21 @@ export const addStudent = (student) => async (dispatch) => {
   dispatch(fetchStudents());
 };
 
-export const updateStudent = (id, student) => async (dispatch) => {
-  await fetch(`${BASE_URL}/${id}.json`, {
-    method: "PUT",
-    body: JSON.stringify(student),
-  });
 
-  dispatch(fetchStudents());
-};
-
-export const deleteStudent = (id) => async (dispatch) => {
-  await fetch(`${BASE_URL}/${id}.json`, {
+export let deleteStudent = (id) => async (dispatch) => {
+  await fetch(`${STUDENT_URL}/${id}.json`, {
     method: "DELETE",
   });
 
   dispatch(fetchStudents());
 };
 
-export const login = () => ({ type: "LOGIN_SUCCESS" });
-export const logout = () => ({ type: "LOGOUT" });
+
+export let updateStudent = (id, student) => async (dispatch) => {
+  await fetch(`${STUDENT_URL}/${id}.json`, {
+    method: "PATCH",
+    body: JSON.stringify(student),
+  });
+
+  dispatch(fetchStudents());
+};

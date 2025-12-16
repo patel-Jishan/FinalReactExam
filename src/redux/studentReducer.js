@@ -1,8 +1,7 @@
-const initialState = {
-  students: [],
+let  initialState = {
   loading: false,
+  students: [],
   error: null,
-  isAuth: false,
 };
 
 export const studentReducer = (state = initialState, action) => {
@@ -11,16 +10,10 @@ export const studentReducer = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case "FETCH_SUCCESS":
-      return { ...state, loading: false, students: action.payload };
+      return { loading: false, students: action.payload, error: null };
 
     case "FETCH_FAIL":
-      return { ...state, loading: false, error: action.payload };
-
-    case "LOGIN_SUCCESS":
-      return { ...state, isAuth: true };
-
-    case "LOGOUT":
-      return { ...state, isAuth: false };
+      return { loading: false, students: [], error: action.payload };
 
     default:
       return state;
